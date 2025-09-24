@@ -21,7 +21,7 @@
     nav {
       display: flex;
       justify-content: center;
-      background: #333;
+      background: #222;
     }
     nav a {
       color: white;
@@ -29,7 +29,7 @@
       padding: 14px 20px;
     }
     nav a:hover {
-      background: #555;
+      background: #444;
     }
     section {
       padding: 40px;
@@ -46,20 +46,110 @@
     }
     .product {
       border: 1px solid #ddd;
+      border-radius: 8px;
       padding: 15px;
       width: 200px;
       text-align: center;
+      background: #fafafa;
+      transition: transform 0.3s;
+    }
+    .product:hover {
+      transform: scale(1.05);
     }
     .product img {
       width: 100%;
       height: auto;
+      border-radius: 5px;
+    }
+    .promo {
+      background: #fbe9e7;
+      border: 2px dashed #e91e63;
+      padding: 20px;
+      margin: 20px auto;
+      width: 80%;
+      border-radius: 10px;
+    }
+    .promo h3 {
+      color: #e91e63;
     }
     footer {
-      background: #222;
+      background: #111;
       color: white;
       text-align: center;
       padding: 15px;
       margin-top: 40px;
+    }
+    .cart-summary {
+      background: #f5f5f5;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+      width: 80%;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .cart-summary table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cart-summary table, .cart-summary th, .cart-summary td {
+      border: 1px solid #ddd;
+    }
+    .cart-summary th, .cart-summary td {
+      padding: 10px;
+      text-align: center;
+    }
+    .checkout-button {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .checkout-button:hover {
+      background-color: #c2185b;
+    }
+    .remove-button {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .remove-button:hover {
+      background-color: darkred;
+    }
+    .contact-form {
+      background: #f5f5f5;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+      width: 50%;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+    .contact-form button {
+      background-color: #e91e63;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background-color: #c2185b;
     }
   </style>
 </head>
@@ -67,13 +157,16 @@
 
   <header>
     <h1>Chanel Clothing Store</h1>
-    <p>แฟชั่นหรูหรา สไตล์เหนือระดับ</p>
+    <p>แฟชั่นสุดหรู สไตล์เหนือระดับ</p>
   </header>
 
+  <!-- เมนูนำทาง -->
   <nav>
     <a href="#all">สินค้าทั้งหมด</a>
     <a href="#bestseller">สินค้าขายดี</a>
-    <a href="#promotion">โปรโมชั่น</a>
+    <a href="#promo">โปรโมชั่น</a>
+    <a href="#cart">ตะกร้าสินค้า</a>
+    <a href="#payment">ชำระเงิน</a>
     <a href="#contact">ติดต่อเรา</a>
   </nav>
 
@@ -82,37 +175,173 @@
     <h2>🛍️ สินค้าทั้งหมด</h2>
     <div class="products">
       <div class="product">
-        <img src="เสื้อ.jpg/200x250" alt="เสื้อ Chanel">
+        <img src="img/เสื้อ.jpg" alt="เสื้อ Chanel">
         <h3>Chanel Classic Blouse</h3>
         <p>ราคา: 15,000 บาท</p>
+        <button onclick="addToCart('Chanel Classic Blouse', 15000)">เพิ่มในตะกร้า</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/200x250" alt="กระโปรง Chanel">
+        <img src="img/กระโปรง.jpg" alt="กระโปรง Chanel">
         <h3>Chanel Skirt</h3>
         <p>ราคา: 18,000 บาท</p>
+        <button onclick="addToCart('Chanel Skirt', 18000)">เพิ่มในตะกร้า</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/200x250" alt="เดรส Chanel">
+        <img src="img/เดรส.jpg" alt="เดรส Chanel">
         <h3>Chanel Luxury Dress</h3>
         <p>ราคา: 25,000 บาท</p>
+        <button onclick="addToCart('Chanel Luxury Dress', 25000)">เพิ่มในตะกร้า</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/200x250" alt="แจ็คเก็ต Chanel">
+        <img src="img/แจ็คเก็ต.jpg" alt="แจ็คเก็ต Chanel">
         <h3>Chanel Jacket</h3>
         <p>ราคา: 30,000 บาท</p>
+        <button onclick="addToCart('Chanel Jacket', 30000)">เพิ่มในตะกร้า</button>
       </div>
       <div class="product">
-        <img src="https://via.placeholder.com/200x250" alt="กางเกง Chanel">
+        <img src="img/กางเกง.jpg" alt="กางเกง Chanel">
         <h3>Chanel Pants</h3>
         <p>ราคา: 20,000 บาท</p>
+        <button onclick="addToCart('Chanel Pants', 20000)">เพิ่มในตะกร้า</button>
       </div>
     </div>
   </section>
 
-  
+<!-- สินค้าขายดี -->
+  <section id="bestseller">
+    <h2>🔥 สินค้าขายดี</h2>
+    <div class="products">
+      <div class="product">
+        <img src="img/เดรสดำ.jpg" alt="เดรส Chanel">
+        <h3>Chanel Evening Dress</h3>
+        <p>ราคา: 40,000 บาท</p>
+ 	  <button onclick="addToCart('Chanel Jacket', 40000)">เพิ่มในตะกร้า</button>
+      </div>
+      <div class="product">
+        <img src="img/ชุดกระโปรง.jpg" alt="เสื้อ Chanel">
+        <h3>Chanel Silk Shirt</h3>
+        <p>ราคา: 22,000 บาท</p>
+ 	  <button onclick="addToCart('Chanel Jacket', 22000)">เพิ่มในตะกร้า</button>
+      </div>
+      <div class="product">
+        <img src="img/มินิกระโปรง.jpg" alt="กระโปรง Chanel">
+        <h3>Chanel Elegant Skirt</h3>
+        <p>ราคา: 19,000 บาท</p>
+ 	  <button onclick="addToCart('Chanel Jacket', 19000)">เพิ่มในตะกร้า</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- โปรโมชั่น -->
+  <section id="promo">
+    <h2>🎉 โปรโมชั่นพิเศษ</h2>
+    <div class="promo">
+      <h3>ลดสูงสุด 30% เฉพาะเดือนนี้!</h3>
+      <p>ซื้อสินค้าครบ 50,000 บาท รับส่วนลดทันที 5,000 บาท</p>
+      <p>ส่งฟรีทั่วประเทศ ไม่มีขั้นต่ำ 🛒</p>
+ 	<button onclick="addToCart('Chanel Jacket', 5000)">เพิ่มในตะกร้า</button>
+    </div>
+
+    <div class="products">
+      <div class="product">
+        <img src="img/เสื้อพรีเมียน.jpg" alt="เสื้อ Chanel">
+        <h3>Chanel Limited Shirt</h3>
+        <p><del>20,000 บาท</del> <br> ✅ 15,000 บาท</p>
+ 	  <button onclick="addToCart('Chanel Jacket', 15000)">เพิ่มในตะกร้า</button>
+      </div>
+      <div class="product">
+        <img src="img/แบล็ค.jpg" alt="กระเป๋า Chanel">
+        <h3>Chanel Bag</h3>
+        <p><del>55,000 บาท</del> <br> ✅ 39,000 บาท</p>
+ 	  <button onclick="addToCart('Chanel Jacket', 39000)">เพิ่มในตะกร้า</button>
+      </div>
+    </div>
+  </section>
+  </section>
+
+ <!-- ตะกร้าสินค้า -->
+  <section id="cart" class="cart-summary">
+    <h2>🛒 ตะกร้าสินค้า</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>สินค้า</th>
+          <th>ราคา</th>
+          <th>ลบ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- รายการสินค้าจะถูกเพิ่มที่นี่ -->
+      </tbody>
+    </table>
+    <p id="total-price">รวมทั้งหมด: 0 บาท</p>
+    <button class="checkout-button" onclick="checkout()">ดำเนินการชำระเงิน</button>
+
+
+  <!-- ฟอร์มติดต่อ -->
+  <section id="contact" class="contact-form">
+    <h2>📬 ติดต่อเรา</h2>
+    <p>กรุณากรอกข้อมูลเพื่อให้เราสามารถติดต่อกลับได้</p>
+    <form id="contact-form">
+      <label for="name">ชื่อ-นามสกุล:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">อีเมล:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">ข้อความ/คำถาม:</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+
+      <button type="submit">ส่งข้อความ</button>
+    </form>
+  </section>
+
   <footer>
     <p>&copy; 2025 Chanel Clothing Store | All Rights Reserved</p>
   </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(product, price) {
+      cart.push({ product, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartTable = document.getElementById("cart-table").getElementsByTagName('tbody')[0];
+      cartTable.innerHTML = ""; // Clear existing rows
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        let row = cartTable.insertRow();
+        row.innerHTML = `<td>${item.product}</td><td>${item.price} บาท</td><td><button class="remove-button" onclick="removeFromCart(${index})">ลบ</button></td>`;
+        totalPrice += item.price;
+      });
+
+      document.getElementById("total-price").innerText = `รวมทั้งหมด: ${totalPrice} บาท`;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("กรุณาเพิ่มสินค้าในตะกร้าก่อนชำระเงิน!");
+        return;
+      }
+      alert("ขอบคุณสำหรับการสั่งซื้อ! ระบบจะทำการชำระเงินต่อไป");
+    }
+
+    // ฟังก์ชันการส่งข้อความติดต่อ
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      alert("ขอบคุณสำหรับข้อความของคุณ! เราจะติดต่อกลับไปเร็วๆ นี้.");
+      document.getElementById("contact-form").reset();
+    });
+  </script>
 
 </body>
 </html>
